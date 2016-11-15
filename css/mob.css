@@ -428,7 +428,11 @@ main {
   }
 }
 @media screen and (max-width: 650px) {
-  .banner {padding: 4% 4% 0 4%;}
+  .banner {
+    padding: 4% 0 0 4%;
+    box-sizing: border-box;
+    width: 100%;
+  }
   .banner-img {
     width: 35%;
     height: auto;
