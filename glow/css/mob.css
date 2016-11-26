@@ -498,7 +498,7 @@ a:active {
           display: inline-block;
           margin: 20px auto;
           padding: 12px 33px 10px;
-          background: rgba(256, 256, 256, 0.2);
+          background: rgba(255, 255, 255, 0.2);
           text-transform: uppercase;
           font-size: 0.938rem;
           color: #fff;
@@ -632,10 +632,10 @@ a:active {
         text-transform: uppercase;   
         margin-right: 9px;
       }
-        .subscribe-email-field::-webkit-input-placeholder {color: rgba(256, 256, 256, 0.8);}
-        .subscribe-email-field::-moz-placeholder          {color: rgba(256, 256, 256, 0.8);}/* Firefox 19+ */
-        .subscribe-email-field:-moz-placeholder           {color: rgba(256, 256, 256, 0.8);}/* Firefox 18- */
-        .subscribe-email-field:-ms-input-placeholder      {color: rgba(256, 256, 256, 0.8);}
+        .subscribe-email-field::-webkit-input-placeholder {color: rgba(255, 255, 255, 0.8);}
+        .subscribe-email-field::-moz-placeholder          {color: rgba(255, 255, 255, 0.8);}/* Firefox 19+ */
+        .subscribe-email-field:-moz-placeholder           {color: rgba(255, 255, 255, 0.8);}/* Firefox 18- */
+        .subscribe-email-field:-ms-input-placeholder      {color: rgba(255, 255, 255, 0.8);}
         
         .subscribe-email-field:focus {outline: 2px solid rgba(0, 0, 0, 0.3);}
 
