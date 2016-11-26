@@ -20,7 +20,6 @@ body {
   padding: 0;
 }
 
-
 @media screen and (max-width: 600px) {
   body {
     background: #fff url("../img/bg_600.jpg") no-repeat 50% 0;
