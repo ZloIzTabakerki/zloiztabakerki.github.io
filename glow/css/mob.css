@@ -509,7 +509,10 @@ a:active {
           font-weight: bold;
         }
 
-        .plans-item-purchase:active {opacity: 0.7;}
+        .plans-item-purchase:active {
+          opacity: 0.7;
+          color: #fff;
+        }
 
 @media screen and (max-width: 600px) {  
   .plans-items {
