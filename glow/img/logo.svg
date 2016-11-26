@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="78" viewBox="0 0 144 78">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 60px;
+        fill: #222;
+        font-family: Pacifico;
+      }
+
+      .cls-2 {
+        fill: #e74c3c;
+      }
+    </style>
+  </defs>
+  <text id="Glow." class="cls-1" x="-2.117" y="56.133">Glow<tspan class="cls-2">.</tspan></text>
+</svg>
