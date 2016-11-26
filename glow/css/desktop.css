@@ -13,27 +13,6 @@
 }
 
 @font-face {
-    font-family: "Helvetica Neue";
-    src: url('../fonts/helveticaneue.woff');
-  	font-weight: normal;
-  	font-style: normal;
-}
-
-@font-face {
-    font-family: "Helvetica Neue";
-    src: url('../fonts/Helvetica Neue 56 Italic.woff');
-  	font-weight: normal;
-  	font-style: italic;
-}
-
-@font-face {
-    font-family: "Helvetica Neue";
-    src: url('../fonts/HelveticaNeue-BoldItalic.woff');
-    font-weight: bold;
-    font-style: italic;
-}
-
-@font-face {
     font-family: "Novecento Wide DemiBold";
     src: url('../fonts/novecentosanswide-demibold-webfont.woff');
     font-weight: normal;
@@ -48,7 +27,7 @@
 }
 
 html {
-  font-family: "Helvetica Neue";
+  font-family: sans-serif;
   font-size: 16px;
   font-style: normal;
 }
