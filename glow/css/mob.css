@@ -510,7 +510,7 @@ a:active {
         }
 
         .plans-item-purchase:active {
-          opacity: 0.7;
+          opacity: 0.9;
           color: #fff;
         }
 
