@@ -51,7 +51,7 @@ section,
 header,
 footer {display: block;}
 
-h1, h2, h3 {
+h2, h3 {
   font-weight: bold;
   font-style: normal;
   color: #000;
@@ -94,11 +94,13 @@ a:active {
 
   .header-logo {
       text-align: center;
-      background: url("../img/logo.svg") no-repeat 50% 50%;
-      background-size: auto 100%;
-      height: 10vw;
-      margin: 7vw;
+      height: 12vw;
+      margin: 7vw 7vw 5vw;
       padding: 0;
+    }
+    .header-logo-img {
+      height: 100%;
+      width: auto;
     }
   .header-install {
     margin: 2vw auto 3.5vw auto;
@@ -130,7 +132,6 @@ a:active {
   .header-arrow {display: none;}
 
   @media screen and (max-width: 700px) {
-    .header-logo-container {margin-top: 5vw;}
     .header-logo {font-size:  10vw;}
     .header-install-ref {
       width: 8vw;
@@ -139,7 +140,6 @@ a:active {
     }
   }
   @media screen and (max-width: 700px) {
-    .header-logo-container {margin-top: 3vw;}
     .header-install-ref {
       width: 10vw;
       line-height: 10vw;
@@ -147,7 +147,6 @@ a:active {
       }
   }
   @media screen and (max-width: 400px) {
-    .header-logo-container {margin-top: 2vw;}
     .header-install-ref {
       width: 12vw;
       line-height: 12vw;
