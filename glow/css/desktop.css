@@ -140,10 +140,13 @@ a:active {
 
   .header-logo {
       text-align: center;
-      background: url("../img/logo.png") no-repeat 50% 50%;
       height: 100px;
       margin-top: 5vw;
       padding: 0;
+    }    
+    .header-logo-img {
+      height: 100%;
+      width: auto;
     }
   .header-install {
     margin: 2vw auto 3.5vw auto;
