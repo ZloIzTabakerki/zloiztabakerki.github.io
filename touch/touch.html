@@ -7,7 +7,7 @@
   <script>
     document.addEventListener('click', () => {
       alert(window.outerHeight - window.innerHeight);
-      alert(document.documentElement.clientHeight);
+      alert(document.documentElement.clientHeight - window.innerHeight);
     });
     
     function checkTouch() {
