@@ -5,6 +5,10 @@
   <title>Document</title>
   <meta content='width=device-width, initial-scale=1.0' name='viewport'>
   <script>
+    document.addEventListener('click', () => {
+      alert(window.outerHeight - window.innerHeight);
+    });
+    
     function checkTouch() {
       var htmlClasses = document.documentElement.classList;
 
