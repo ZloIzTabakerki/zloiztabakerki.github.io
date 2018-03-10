@@ -13,7 +13,8 @@
       document.addEventListener('click', () => {
         $(document.body).append('<div style="position: fixed; height: 100vh; z-index: -1" id="vh-measurer"></div>');
         const measurer = $('#vh-measurer');
-        const vhHeight = measurer.height();
+        // const vhHeight = measurer.height();
+        const vhHeight = $(window).height();
         const innerHeight = window.innerHeight;
 
         alert(vhHeight - innerHeight);
