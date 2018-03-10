@@ -4,7 +4,21 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
   <script>
+    $(document).ready(() => {
+      $(document)append(`
+        <div style="position: fixed; height: 100vh; z-index: -1" id="vh-measurer">
+        </div>
+      `);
+      const vhHeight = $('#vh-measurer').height;
+      const innerHeight = window.innerHeight;
+      
+      alert(vhHeight - innerHeight);
+    });
     document.addEventListener('click', () => {
       alert(window.outerHeight - window.innerHeight);
       alert(document.documentElement.clientHeight - window.innerHeight);
