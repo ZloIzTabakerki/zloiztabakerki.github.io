@@ -10,7 +10,7 @@
   crossorigin="anonymous"></script>
   <script>
     $(document).ready(() => {
-      $(document)append(`
+      $(document).append(`
         <div style="position: fixed; height: 100vh; z-index: -1" id="vh-measurer">
         </div>
       `);
@@ -18,10 +18,6 @@
       const innerHeight = window.innerHeight;
       
       alert(vhHeight - innerHeight);
-    });
-    document.addEventListener('click', () => {
-      alert(window.outerHeight - window.innerHeight);
-      alert(document.documentElement.clientHeight - window.innerHeight);
     });
     
     function checkTouch() {
