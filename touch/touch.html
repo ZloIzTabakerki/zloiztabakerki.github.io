@@ -11,7 +11,7 @@
   <script>
     $(document).ready(() => {
       $(document.body).append('<div style="position: fixed; height: 100vh; z-index: -1" id="vh-measurer"></div>');
-      const vhHeight = $('#vh-measurer').height;
+      const vhHeight = $('#vh-measurer').height();
       const innerHeight = window.innerHeight;
       
       alert(vhHeight - innerHeight);
