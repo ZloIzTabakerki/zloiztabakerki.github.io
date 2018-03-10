@@ -10,7 +10,7 @@
   crossorigin="anonymous"></script>
   <script>
     $(document).ready(() => {
-      $(document).append('<div style="position: fixed; height: 100vh; z-index: -1" id="vh-measurer"></div>');
+      $(document.body).append('<div style="position: fixed; height: 100vh; z-index: -1" id="vh-measurer"></div>');
       const vhHeight = $('#vh-measurer').height;
       const innerHeight = window.innerHeight;
       
