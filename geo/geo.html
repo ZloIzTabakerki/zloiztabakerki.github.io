@@ -4,7 +4,7 @@
     var span = document.getElementById('loc');
     
     navigator.geolocation.watchPosition((position) => {
-      span.innerHtml = position.coords.latitude + ' ' + position.coords.longitude;
+      span.innerHTML = position.coords.latitude + ' ' + position.coords.longitude;
     }, (err) => {
       alert(err);
     });
