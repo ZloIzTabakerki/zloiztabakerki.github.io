@@ -1,0 +1,10 @@
+<body>
+  <script>
+    navigator.geolocation.watchPosition((position) => {
+      alert(position.coords.latitude + ' ' + position.coords.longitude);
+    }, (err) => {
+      alert(err);
+    });
+  </script>
+
+</body>
