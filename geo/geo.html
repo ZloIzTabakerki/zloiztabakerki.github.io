@@ -1,7 +1,10 @@
 <body>
+  <h1>Hi, your location is <span id="loc">unknown<span><h1>
   <script>
+    var span = document.getElementById('loc');
+    
     navigator.geolocation.watchPosition((position) => {
-      alert(position.coords.latitude + ' ' + position.coords.longitude);
+      span.innerHtml = position.coords.latitude + ' ' + position.coords.longitude;
     }, (err) => {
       alert(err);
     });
