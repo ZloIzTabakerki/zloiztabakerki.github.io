@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Scroll Snap Demo</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .heading {
+      position: absolute;
+      text-align: center;
+      /* width: 50vw; */
+      background-color: rgba(255, 255, 255, 0.5);
+      margin: 0;
+      padding: 10px;
+    }
+
+    .container {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      font-size: 200px;
+      text-align: center;
+      line-height: 100vh;
+      vertical-align: middle;
+      height: 100vh;
+      background-color: cornflowerblue;
+    }
+
+    li:nth-child(2n) {
+      background-color: aquamarine;
+    }
+
+    .section {
+      position: relative;
+    }
+
+    .section::before,
+    .section::after {
+      content: '';
+      display: block;
+      border: 50px solid #000;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      position: absolute;
+      left: 50%;
+      opacity: 0.4;
+    }
+
+    
+    .section::before {
+      top: 50px;
+      transform: translateX(-50%) rotate(-45deg);
+    }
+
+    .section::after {
+      bottom: 50px;
+      transform: translateX(-50%) rotate(135deg);
+    }
+
+    .long {
+      height: 150vh;
+      line-height: 150vh;
+    }
+    .short {
+      height: 50vh;
+      line-height: 50vh;
+    }
+  
+  </style>
+</head>
+<body>
+  <ul class="container">
+    <li id="1" class="section">1</li>
+    <li id="2" class="section long">2</li>
+    <li id="3" class="section short">3</li>
+    <li id="4" class="section">4</li>
+    <li id="5">5</li>
+    <li id="6" class="section">6</li>
+    <li id="7" class="section">7</li>
+    <li id="8" class="short">8</li>
+  </ul>  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
