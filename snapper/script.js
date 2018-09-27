@@ -164,6 +164,12 @@ Snapper.prototype.up = function() {
 }
 
 Snapper.prototype.down = function() {
+  if (this.nextSection === this.sections.length - 1 && 
+    this.bounds[this.nextSection].bottom === this.innerHeight
+  ) {
+    return false;
+  }
+
   if (this.nextSection !== null) {
     this.scrollNextIntoView();
 
@@ -324,6 +330,6 @@ $(() => {
     panelSelector: '.section',
     scrollStep: 50,
     scrollInterval: 10,
-    // isNative: true,
+    isNative: true,
   });
 });
