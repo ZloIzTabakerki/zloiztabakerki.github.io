@@ -330,6 +330,6 @@ $(() => {
     panelSelector: '.section',
     scrollStep: 50,
     scrollInterval: 10,
-    isNative: true,
+    // isNative: true,
   });
 });
