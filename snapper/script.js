@@ -1,6 +1,11 @@
 function Snapper(options) {
-  this.scrollStep = 50;
+  this.scrollStep = options.scrollStep !== undefined ? 
+    options.scrollStep : 50;
+  this.scrollInterval = options.scrollInterval !== undefined ? 
+    options.scrollInterval : 4;
+  this.isNative = !!options.isNative;
   this.scrollTimer;
+
   this.scrollTop = $(window).scrollTop();
   this.innerHeight = window.innerHeight;
   this.isScrolling = false;
@@ -17,6 +22,7 @@ function Snapper(options) {
   this.wheelHandler = this.wheelHandler.bind(this);
   this.keysHandler = this.keysHandler.bind(this);
   this.scrollHandler = this.scrollHandler.bind(this);
+  this.resizeHandler = this.resizeHandler.bind(this);
   this.init();  
 }
 
@@ -25,9 +31,19 @@ Snapper.prototype.init = function() {
 
   $(window).on('wheel', this.wheelHandler);
   $(window).on('keydown', this.keysHandler);
+  window.addEventListener('resize', this.resizeHandler, {
+    passive: true
+  });
   window.addEventListener('scroll', this.scrollHandler, {
     passive: true
   });
+}
+Snapper.prototype.resizeHandler = function(e) {
+  var self = this;
+
+  this.scrollTop = $(window).scrollTop();
+  this.updateSectionsBounds();
+  this.updateIndexes();
 }
 
 Snapper.prototype.scrollHandler = function(e) {
@@ -225,22 +241,16 @@ Snapper.prototype.scrollTo = function(options) {
   var top = options.top !== undefined ? 
     Math.round(options.top) : 
     Math.round(options.bottom - this.innerHeight);
-  var step = top > this.scrollTop ? this.scrollStep : -this.scrollStep;
   var self = this;
   var interval = setInterval(function () {
-    if (top === self.scrollTop) {      
-      setTimeout(function () {
-        self.isTriggering = false;
-      }, 150);
-    } else if (
-        (top > self.scrollTop) ? 
-          (step < top - self.scrollTop) :
-          (step > top - self.scrollTop)
-      ) {
+    var isDown = top === self.scrollTop ? null : top > self.scrollTop;
+    
+    if (isDown !== null && Math.abs(top - self.scrollTop) > self.scrollStep) { 
+      var step = isDown ? self.scrollStep : -self.scrollStep;
       window.scrollTo({
         top: self.scrollTop + step
       });
-    } else {
+    } else { 
       window.scrollTo({
         top: top
       });
@@ -249,9 +259,9 @@ Snapper.prototype.scrollTo = function(options) {
 
       setTimeout(function () {
         self.isTriggering = false;
-      }, 150);
+      }, 150);    
     }
-  }, 4);
+  }, this.scrollInterval);
 }
 
 Snapper.prototype.updateIndexes = function() {
@@ -299,7 +309,10 @@ Snapper.prototype.updateIndexes = function() {
 
 $(() => {
   snapper = new Snapper({
-    panelSelector: '.section'
+    panelSelector: '.section',
+    scrollStep: 50,
+    scrollInterval: 10,
+    isNative: true,
   });
 
   console.log(snapper);
