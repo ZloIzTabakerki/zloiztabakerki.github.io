@@ -5,6 +5,8 @@ function Snapper(options) {
     options.scrollInterval : 4;
   this.isNative = !!options.isNative;
   this.scrollTimer;
+  this.interval = null;
+  this.timer = null;
 
   this.scrollTop = $(window).scrollTop();
   this.innerHeight = window.innerHeight;
@@ -23,6 +25,24 @@ function Snapper(options) {
   this.keysHandler = this.keysHandler.bind(this);
   this.scrollHandler = this.scrollHandler.bind(this);
   this.resizeHandler = this.resizeHandler.bind(this);
+
+  if (this.isNative) {
+    this.scrollTo = function (options) {
+      if (!this.isTriggering) {
+        this.isTriggering = true;
+      };
+      options.behavior = 'smooth';
+      window.scrollTo(options);
+    };
+    this.scrollIntoView = function (elemIndex, options) {
+      if (!this.isTriggering) {
+        this.isTriggering = true;
+      };
+      options.behavior = 'smooth';
+      this.sections[elemIndex].scrollIntoView(options);
+    };
+
+  }
   this.init();  
 }
 
@@ -47,16 +67,25 @@ Snapper.prototype.resizeHandler = function(e) {
 }
 
 Snapper.prototype.scrollHandler = function(e) {
+  if (this.timer) {
+    clearTimeout(this.timer);
+  }
   var self = this;
 
   this.scrollTop = $(window).scrollTop();
   this.updateSectionsBounds();
-  this.updateIndexes();
+  this.updateIndexes();  
+
+  if (this.isTriggering) {
+    this.timer =  setTimeout(function () {
+      self.isTriggering = false;
+      self.timer = null;
+    }, 150);
+  }
 }
 
 Snapper.prototype.wheelHandler = function(e) {
   if (this.isTriggering) {
-    console.log('prevented');
     return false;
   };
 
@@ -78,7 +107,6 @@ Snapper.prototype.wheelHandler = function(e) {
 
 Snapper.prototype.keysHandler = function(e) {
   if (this.isTriggering) {
-    console.log('prevented');
     return false;
   };
 
@@ -118,7 +146,6 @@ Snapper.prototype.up = function() {
 
     return false;
   }
-
   
   if (this.prevSection !== null) {
     this.scrollPrevIntoView();
@@ -159,16 +186,12 @@ Snapper.prototype.scrollActiveIntoView = function() {
   this.scrollIntoView(this.activeSection, {
     block: activeBounds.height <= this.innerHeight ? 'start' : 'end'
   });
-
-  console.log('scroll to active');
 }
 
 Snapper.prototype.scrollNextIntoView = function() {
   this.scrollIntoView(this.nextSection, {
     block: 'start'
   });
-
-  console.log('scroll to next');
 }
 
 Snapper.prototype.scrollPrevIntoView = function() {
@@ -176,8 +199,6 @@ Snapper.prototype.scrollPrevIntoView = function() {
   this.scrollIntoView(this.prevSection, {
     block: prevBounds.height <= this.innerHeight ? 'start' : 'end'
   });
-
-  console.log('scroll to prev');
 }
 
 
@@ -236,8 +257,9 @@ Snapper.prototype.scrollIntoView = function(sectionIndex, options) {
 }
 
 Snapper.prototype.scrollTo = function(options) {
-  this.isTriggering = true;
-
+  if (!this.isTriggering) {
+    this.isTriggering = true;
+  }
   var top = options.top !== undefined ? 
     Math.round(options.top) : 
     Math.round(options.bottom - this.innerHeight);
@@ -256,10 +278,6 @@ Snapper.prototype.scrollTo = function(options) {
       });
 
       clearInterval(interval);
-
-      setTimeout(function () {
-        self.isTriggering = false;
-      }, 150);    
     }
   }, this.scrollInterval);
 }
@@ -280,7 +298,6 @@ Snapper.prototype.updateIndexes = function() {
 
   if (activeSection !== this.activeSection && this.activeSection !== null) {
     this.prevActiveSection = this.activeSection;
-    console.log('prevActiveSection:', this.prevActiveSection);
   }
 
   this.activeSection = activeSection;
@@ -300,11 +317,6 @@ Snapper.prototype.updateIndexes = function() {
   this.nextSection = nextBounds && 
     (nextBounds.top <= this.innerHeight + 1) ?
     (currentActive + 1) : null;
-
-  
-  console.log(this.prevSection);
-  console.log(this.activeSection);
-  console.log(this.nextSection);
 }
 
 $(() => {
@@ -312,8 +324,6 @@ $(() => {
     panelSelector: '.section',
     scrollStep: 50,
     scrollInterval: 10,
-    isNative: true,
+    // isNative: true,
   });
-
-  console.log(snapper);
 });
